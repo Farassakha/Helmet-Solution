@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin Page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    </h:head>
+    <body class="bg-light">
+        <div class="py-5 text-center">
+            <h1 class="mb-4">Helmet Solution Admin</h1>
+            <h3>Helmet Solution Stock</h3>
+        </div>
+        <h:form class="text-center">
+        <hr/>
+        <h:dataTable border="1" value="#{tblStock.getAllRecords()}" var="stock"  cellpadding="10" class="m-auto w-80" > 
+                <h:column>
+                    <f:facet name="header">id barang</f:facet>
+                        #{stock.idBarang}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nama Helm</f:facet>
+                        #{stock.namaHelm}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Jenis Helm</f:facet>
+                        #{stock.jenisHelm}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Stok Helm</f:facet>
+                        #{stock.stockHelm}
+                </h:column>
+            </h:dataTable>
+        <hr/>
+        <h2>Update and Delete</h2><br/>
+        Search Data ID <h:inputText value="#{tblStock.idBarang}"/>&nbsp;
+        <h:commandButton value="Search" action="#{tblStock.getById()}"/>
+        <hr/>
+        Nama Helm <h:inputText value="#{tblStock.namaHelm}"/>
+        Jenis Helm <h:inputText value="#{tblStock.jenisHelm}"/>
+        Stok Helm <h:inputText value="#{tblStock.stockHelm}"/>&nbsp;
+        <h:commandButton value="edit" action="#{tblStock.edit()}"/>&nbsp;<h:commandButton value="delete" action="#{tblStock.delete()}"/>
+        </h:form>
+    </body>
+</html>
+

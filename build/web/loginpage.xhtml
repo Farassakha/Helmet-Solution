@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Log In</title>
+        <link rel="stylesheet" href="CSS/loginstyle.css"/>
+        <link rel="stylesheet" href="CSS/homestyle.css"/>
+    </h:head>
+    <!--Login Form Starts Here-->
+    <h:body class="body">
+        <h:form class="model-form">
+            <h2>Please Login First</h2><br/>
+            <p>Username</p><br/>
+            <h:inputText a:placeholder="Username" class="text" value="#{tblUser.username}"/><br/><br/>
+            <p>Password</p><br/>
+            <h:inputSecret a:placeholder="Password" class="password" value="#{tblUser.password}" /><br/><br/>
+            <h:commandButton value="Login" class="button" action="#{tblUser.login_user()}"/><br/><br/>
+            <h:commandLink value="Sign Up" action="register.xhtml" class="signup"/>
+        </h:form>
+    </h:body>
+    <!--Login Form Ends here-->
+    <!--Navbar Starts Here-->
+        <nav class="navigate"><br/>
+            <label class="logo">Helmet Solution</label>
+            <ul class="ul">
+                <li><a href="homepage.xhtml" class="home" >Home</a></li>
+                <li><a href="#" >About Us</a></li>
+                <li><a href="#" >Contact</a></li>
+            </ul>
+        </nav>
+    <!--Navbar Ends Here-->
+</html>
+

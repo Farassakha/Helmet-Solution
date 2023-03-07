@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DAOLogin.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;helmet_solution4&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">DAO</a> &gt; <span class="el_source">DAOLogin.java</span></div><h1>DAOLogin.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DAO;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojo.TblUser;
+import pojo.helmetsolution4Util;
+
+/**
+ *
+ * @author faras sakha
+ */
+<span class="fc" id="L20">public class DAOLogin {</span>
+    public List&lt;TblUser&gt; getBy(String uName, String uPass)
+    {
+<span class="fc" id="L23">        Transaction trans = null;</span>
+<span class="fc" id="L24">        TblUser us = new TblUser();</span>
+<span class="fc" id="L25">        List&lt;TblUser&gt; user = new ArrayList();</span>
+<span class="fc" id="L26">        Session session = helmetsolution4Util.getSessionFactory().openSession();</span>
+        try {
+<span class="fc" id="L28">            trans = session.beginTransaction();</span>
+<span class="fc" id="L29">            Query query = session.createQuery(&quot;from TblUser where username=:uName AND password=:uPass&quot;);</span>
+<span class="fc" id="L30">            query.setString(&quot;uName&quot;, uName);</span>
+<span class="fc" id="L31">            query.setString(&quot;uPass&quot;, uPass);</span>
+<span class="fc" id="L32">            us = (TblUser) query.uniqueResult();</span>
+<span class="fc" id="L33">            user = query.list();</span>
+<span class="fc" id="L34">            trans.commit();</span>
+<span class="nc" id="L35">        } catch (Exception e) {</span>
+<span class="nc" id="L36">            System.out.println(&quot;e&quot;);</span>
+<span class="fc" id="L37">        }</span>
+<span class="fc" id="L38">        return user;</span>
+    }
+    
+    public String add_user(TblUser user)
+    {
+<span class="fc" id="L43">        Transaction trans = null;</span>
+<span class="fc" id="L44">        Session session = helmetsolution4Util.getSessionFactory().openSession();</span>
+        try {
+<span class="fc" id="L46">            trans = session.beginTransaction();</span>
+<span class="fc" id="L47">            session.save(user);</span>
+<span class="fc" id="L48">            trans.commit();</span>
+            
+<span class="nc" id="L50">        } catch (Exception e) {</span>
+<span class="nc" id="L51">            System.err.println(&quot;e&quot;);</span>
+<span class="fc" id="L52">        }</span>
+<span class="fc" id="L53">        return &quot;loginpage.xhtml&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
